@@ -5,7 +5,7 @@ import com.co.coservanguard_backend.dto.CodigoQRDTO;
 import com.co.coservanguard_backend.entity.CodigoQR;
 import com.co.coservanguard_backend.entity.Puesto;
 
-import com.co.coservanguard_backend.entity.Usuario;
+
 import com.co.coservanguard_backend.interfaces.services.CodigoQRServiceInterface;
 import com.co.coservanguard_backend.repository.CodigoQRRepository;
 import com.co.coservanguard_backend.repository.PuestoRepository;
