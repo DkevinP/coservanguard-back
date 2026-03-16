@@ -47,25 +47,20 @@ public class SecurityConfig {
                         // ZONA PÚBLICA: Todos pueden intentar hacer login
                         .requestMatchers("/api/usuario/login").permitAll()
 
-                        // ZONA ADMINISTRATIVA (Para Angular): Solo Coordinador y Supervisor
-                        // Suponiendo que tus endpoints de gestión empiecen con /api/admin/ o /api/cliente/
-                        .requestMatchers("/api/admin/**", "/api/cliente/**", "/api/sede/**").hasAnyRole("COORDINADOR", "SUPERVISOR")
+                        // ZONA ADMINISTRATIVA
+                        .requestMatchers("/api/codigoqr", "/api/cliente/**", "/api/sede-cliente/**","/api/puesto/**","/api/usuario/**","/api/asignacion/**","/api/cargo/**").hasAnyRole("COORDINADOR", "SUPERVISOR","ADMINISTRADOR")
 
-                        // ZONA OPERATIVA (Para Android): Solo Vigilante y Supervisor
+                        // ZONA OPERATIVA
                         // Suponiendo que la app consume endpoints que empiecen con /api/marcacion/
-                        .requestMatchers("/api/marcacion/**", "/api/codigoqr/**").hasAnyRole("VIGILANTE", "SUPERVISOR")
-
-                        // ZONA CREACIÓN USUARIOS: Solo el Coordinador puede crear más usuarios
-                        .requestMatchers("/api/usuario/crear-usuario").permitAll()
-
-                        // Cualquier otra URL que no esté arriba, requiere estar logueado al menos
+                        .requestMatchers("/api/marcacionqr/**").permitAll()
+                        //ZONA DE DESVIO
                         .anyRequest().authenticated()
                 )
 
                 // Indicamos que nuestra API es Stateless (sin estado), no guarda sesión en memoria
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        // NOTA: En un flujo completo con JWT, aquí se añade un filtro extra para leer el Token JWT
+
          http.addFilterBefore(jwtFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
