@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cargo")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://coservanguard.eastus.cloudapp.azure.com")
 public class CargoController {
 
     private final CargoService cargoService;

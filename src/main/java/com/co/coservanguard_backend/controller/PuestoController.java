@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/puesto")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://coservanguard.eastus.cloudapp.azure.com")
 public class PuestoController {
 
     private final PuestoService puestoService;

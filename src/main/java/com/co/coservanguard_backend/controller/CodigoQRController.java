@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/codigoqr")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://coservanguard.eastus.cloudapp.azure.com")
 public class CodigoQRController {
 
     private CodigoQRService codigoQRService;

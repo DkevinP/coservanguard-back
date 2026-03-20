@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/asignacion")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://coservanguard.eastus.cloudapp.azure.com")
 public class AsignacionController {
 
     private AsignacionService asignacionService;

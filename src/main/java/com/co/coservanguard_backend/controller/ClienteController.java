@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cliente")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://coservanguard.eastus.cloudapp.azure.com")
 public class ClienteController {
 
     private final ClienteService clienteService;
