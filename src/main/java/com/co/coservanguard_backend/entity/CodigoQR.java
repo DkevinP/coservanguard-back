@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "codigoqr")
+@Table(name = "Codigoqr")
 public class CodigoQR {
 
     @Id
