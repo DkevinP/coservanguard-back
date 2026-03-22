@@ -16,8 +16,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+      - name: Compilar proyecto con Maven
+        run: mvn clean package -DskipTests -Dfile.encoding=UTF-8
 
       - name: Copy JAR to Azure
         uses: appleboy/scp-action@master
