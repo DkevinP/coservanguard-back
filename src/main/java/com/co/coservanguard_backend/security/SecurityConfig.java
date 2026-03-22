@@ -68,7 +68,7 @@ public class SecurityConfig {
                                 "/api/usuario/**", "/usuario/**",
                                 "/api/asignacion/**", "/asignacion/**",
                                 "/api/cargo/**", "/cargo/**")
-                        .hasAnyRole("COORDINADOR", "SUPERVISOR", "ADMINISTRADOR")
+                        .hasAnyAuthority("ADMINISTRADOR", "COORDINADOR", "SUPERVISOR")
 
                         // ZONA OPERATIVA (Con y sin /api para Nginx)
                         .requestMatchers("/api/marcacionqr/**", "/marcacionqr/**").permitAll()
