@@ -53,10 +53,10 @@ public class SecurityConfig {
                         // ZONA PÚBLICA: Todos pueden intentar hacer login
                         .requestMatchers("/api/usuario/login").permitAll()
                         .requestMatchers("/api/usuario/crear-usuario").permitAll()
-                        .requestMatchers("/api/cargo/crear-cargo").permitAll()
+
                         // ZONA ADMINISTRATIVA
                         .requestMatchers("/api/codigoqr", "/api/cliente/**", "/api/sede-cliente/**","/api/puesto/**","/api/usuario/**","/api/asignacion/**","/api/cargo/**").hasAnyRole("COORDINADOR", "SUPERVISOR","ADMINISTRADOR")
-
+                        .requestMatchers("/api/cargo/crear-cargo").permitAll()
                         // ZONA OPERATIVA
                         // Suponiendo que la app consume endpoints que empiecen con /api/marcacion/
                         .requestMatchers("/api/marcacionqr/**").permitAll()
