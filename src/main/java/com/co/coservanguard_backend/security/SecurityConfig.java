@@ -79,7 +79,8 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // Permitir Angular
-        configuration.setAllowedOrigins(Arrays.asList("http://coservanguard.eastus.cloudapp.azure.com"));
+        configuration.setAllowedOrigins(Arrays.asList("http://coservanguard.eastus.cloudapp.azure.com",
+                "http://localhost:4200"));
         //
         // Permitir métodos
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
