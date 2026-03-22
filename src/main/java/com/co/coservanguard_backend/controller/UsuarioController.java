@@ -50,12 +50,21 @@ public class UsuarioController {
     }
 
     @PostMapping("/crear-usuario")
-    public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
-        String passwordEncriptada = passwordEncoder.encode(usuarioDTO.getContrasena());
-        usuarioDTO.setContrasena(passwordEncriptada);
-        UsuarioDTO usuarioDTO1 = usuarioService.crearUsuario(usuarioDTO);
+    // OJO: Cambiamos ResponseEntity<UsuarioDTO> por ResponseEntity<?> para poder devolver texto en caso de error
+    public ResponseEntity<?> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+        try {
+            String passwordEncriptada = passwordEncoder.encode(usuarioDTO.getContrasena());
+            usuarioDTO.setContrasena(passwordEncriptada);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioDTO1);
+            UsuarioDTO usuarioGuardado = usuarioService.crearUsuario(usuarioDTO);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(usuarioGuardado);
+
+        } catch (Exception e) {
+            // ¡EL TRUCO DE ORO! Si algo falla, Postman te mostrará el motivo exacto en texto rojo
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error real de la BD: " + e.getMessage());
+        }
     }
 
     @GetMapping("/list-usuario")
