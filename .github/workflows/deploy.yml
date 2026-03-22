@@ -1,7 +1,7 @@
 name: Deploy Spring Boot API
 on:
   push:
-    branches: [ "main" ] # Cambia a 'master' si esa es tu rama principal
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
@@ -36,7 +36,14 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            # Renombrar el jar generado a api.jar
+            # 1. Detener el servicio para liberar el archivo viejo
+            sudo systemctl stop coservanguard.service
+            
+            # 2. Eliminar el api.jar viejo para evitar conflictos al renombrar
+            rm -f /opt/proyecto-api/api.jar
+            
+            # 3. Renombrar el NUEVO jar (recién subido) a api.jar
             mv /opt/proyecto-api/*.jar /opt/proyecto-api/api.jar
-            # Reiniciar el servicio que creamos antes
-            sudo systemctl restart coservanguard.service
+            
+            # 4. Iniciar el servicio con el código nuevo
+            sudo systemctl start coservanguard.service
