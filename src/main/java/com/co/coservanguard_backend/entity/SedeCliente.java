@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
-@Table(name = "Sede_cliente")
+@Table(name = "sede_cliente")
 public class SedeCliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

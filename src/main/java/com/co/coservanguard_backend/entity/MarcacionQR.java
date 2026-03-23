@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name ="Marcacionqr")
+@Table(name ="marcacionqr")
 public class MarcacionQR {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,7 @@ package com.co.coservanguard_backend.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Asignacion")
+@Table(name = "asignacion")
 public class Asignacion {
 
     @Id
